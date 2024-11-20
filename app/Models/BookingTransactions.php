@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use App\Models\OfficeSpace;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -14,7 +15,7 @@ class BookingTransactions extends Model
 
     protected $fillable = [
         'name',
-        'phonr_number',
+        'phone_number',
         'booking_trx',
         'office_space_id',
         'total_amount',
@@ -29,7 +30,7 @@ class BookingTransactions extends Model
         $this->attributes['name'] = $value;
     }
 
-    public function officeSpace(): belongsTo
+    public function officeSpace(): BelongsTo
     {
         return $this->belongsTo(OfficeSpace::class);
     }
